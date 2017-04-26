@@ -1,10 +1,14 @@
-#N canvas 2 23 1240 718 10;
-#X msg 34 59 \; pd dsp \$1;
-#X obj 171 23 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 171 49 openpanel;
-#X obj 30 34 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#N canvas 392 157 1240 718 10;
+#X msg 21 36 \; pd dsp \$1;
+#X obj 19 14 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
 ;
+#X msg 121 64 set nes_tri;
+#X msg 107 5 set nes_square;
+#X obj 112 88 s wave_type;
+#X msg 110 25 set nes_pulse1_4;
+#X msg 115 45 set nes_pulse1_8;
+#X obj 262 6 notein;
+#N canvas 987 90 695 375 waveTables 0;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array nes_square 600 float 3;
 #A 0 0.788757 0.788757 0.788757 0.788757 0.788757 0.788757 0.788757
@@ -89,7 +93,7 @@
 -0.783295 -0.801086 -0.767029 -0.817932 -0.753601 -0.826843 -0.759918
 -0.800354 -0.823181 -0.49176;
 #X coords 0 1 600 -1 200 140 1;
-#X restore 412 22 graph;
+#X restore 18 15 graph;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array nes_tri 600 float 3;
 #A 0 0.0373535 0.139984 0.114349 0.127686 0.121033 0.123199 0.123718
@@ -128,7 +132,7 @@
 0.109314 0.131989 0.116547 0.127411 0.119965 0.124207 0.122711 0.122223
 0.124573 0.120789 0.125366 0.120453 0.125153 0.121277 0.122955 0.124847
 0.117554 0.135956 0.0628662 -0.0144958 0.00631714 -0.00210571 0.000244141
-0.000762939 -0.00134277 0.00119019 -0.000823975 0.000335693 6.10352e-05
+0.000762939 -0.00134277 0.00119019 -0.000823975 0.000335693 6.10352e-005
 -0.000244141 0.00012207 0.000549316 -0.00143433 0.00262451 -0.00421143
 0.00576782 -0.00772095 0.00915527 -0.121429 -0.119507 -0.127838 -0.118347
 -0.126862 -0.119751 -0.124969 -0.121765 -0.123169 -0.123779 -0.121307
@@ -175,31 +179,8 @@
 0.00161743 -0.00216675 0.00262451 -0.00274658 0.00259399 -0.0015564
 0.00012207 0.00253296 -0.00863647;
 #X coords 0 1 600 -1 200 140 1;
-#X restore 413 180 graph;
-#X obj 892 497 dac~ 1 2;
-#X obj 910 396 vline~;
-#X obj 891 419 *~;
-#X obj 891 335 *~ 600;
-#X text 985 307 44100/tabLength;
-#X text 948 335 tabLength;
-#X obj 893 309 phasor~ 73.5;
-#X obj 893 282 expr 73.5 * $f1;
-#X obj 786 200 expr $f1 + $f2;
-#X floatatom 893 229 5 0 0 0 - - -;
-#X obj 893 254 expr pow(2 \, ($f1/12));
-#X text 803 170 play;
-#X obj 768 243 expr $i1 % 12;
-#X obj 764 363 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X msg 769 170 1;
-#X text 880 200 ++;
-#X msg 301 269 set nes_tri;
-#X msg 301 294 set nes_square;
-#X obj 892 360 tabread4~ nes_square;
-#X obj 239 337 s wave_type;
-#X obj 811 336 r wave_type;
-#X msg 935 379 0.4 30 \, 0 100 100;
-#N canvas 0 22 450 300 (subpatch) 0;
+#X restore 19 173 graph;
+#N canvas 0 50 450 300 (subpatch) 0;
 #X array nes_pulse1_8 600 float 3;
 #A 0 0.571442 0.78302 0.78302 0.78302 0.78302 0.78302 0.78302 0.78302
 0.78302 0.78302 0.78302 0.78302 0.78302 0.78302 0.78302 0.78302 0.78302
@@ -278,9 +259,8 @@
 -0.769135 -0.794708 -0.780243 -0.775024 -0.806488 -0.734283 -0.859283
 -0.665497 -0.980194;
 #X coords 0 1 600 -1 200 140 1;
-#X restore 412 342 graph;
-#X obj 172 102 soundfiler;
-#N canvas 0 0 450 300 (subpatch) 0;
+#X restore 230 15 graph;
+#N canvas 0 50 450 300 (subpatch) 0;
 #X array nes_pulse1_4 600 float 3;
 #A 0 0.576843 0.789429 0.789429 0.789429 0.789429 0.789429 0.789429
 0.789429 0.789429 0.789429 0.789429 0.789429 0.789429 0.789429 0.789429
@@ -367,33 +347,59 @@
 -0.797272 -0.788574 -0.779266 -0.819366 -0.739014 -0.866882 -0.673553
 -0.986908;
 #X coords 0 1 600 -1 200 140 1;
-#X restore 411 508 graph;
-#X msg 170 74 read -resize \$1 nes_pulse1_4;
-#X msg 168 261 set nes_pulse1_4;
-#X msg 172 293 set nes_pulse1_8;
-#X text 933 229 semi above root modulo'd;
-#X connect 1 0 2 0;
-#X connect 2 0 31 0;
-#X connect 3 0 0 0;
-#X connect 7 0 8 1;
-#X connect 8 0 6 0;
-#X connect 8 0 6 1;
-#X connect 9 0 24 0;
-#X connect 12 0 9 0;
-#X connect 13 0 12 0;
-#X connect 14 0 15 0;
-#X connect 15 0 14 1;
-#X connect 15 0 18 0;
-#X connect 16 0 13 0;
-#X connect 18 0 16 0;
-#X connect 19 0 27 0;
-#X connect 20 0 14 0;
-#X connect 20 0 19 0;
-#X connect 22 0 25 0;
-#X connect 23 0 25 0;
-#X connect 24 0 8 0;
-#X connect 26 0 24 0;
-#X connect 27 0 7 0;
-#X connect 31 0 29 0;
-#X connect 32 0 25 0;
-#X connect 33 0 25 0;
+#X restore 231 173 graph;
+#X text 183 334 Eb base note;
+#X obj 450 17 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 450 43 openpanel;
+#X obj 451 96 soundfiler;
+#X msg 449 68 read -resize \$1 nes_pulse1_4;
+#X connect 5 0 6 0;
+#X connect 6 0 8 0;
+#X connect 8 0 7 0;
+#X restore 114 116 pd waveTables;
+#X obj 264 30 poly 6 0;
+#X obj 261 87 route 1 2 3 4 5 6;
+#X obj 262 61 pack 0 0 0;
+#X obj 286 174 *~ 1;
+#X obj 281 217 lop~;
+#X obj 119 358 dac~;
+#X obj 282 241 s~ audioOut;
+#X obj 123 331 r~ audioOut;
+#X obj 263 133 note;
+#X obj 334 112 note;
+#X obj 261 111 note;
+#X obj 296 112 note;
+#X obj 297 133 note;
+#X obj 334 133 note;
+#X floatatom 348 29 5 0 0 0 - - -, f 5;
+#X obj 305 196 mtof 127;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 7 0 9 0;
+#X connect 7 0 23 0;
+#X connect 7 1 9 1;
+#X connect 9 0 11 0;
+#X connect 9 1 11 1;
+#X connect 9 2 11 2;
+#X connect 10 0 19 0;
+#X connect 10 1 20 0;
+#X connect 10 2 17 0;
+#X connect 10 3 21 0;
+#X connect 10 4 18 0;
+#X connect 10 5 22 0;
+#X connect 11 0 10 0;
+#X connect 12 0 13 0;
+#X connect 13 0 15 0;
+#X connect 16 0 14 0;
+#X connect 16 0 14 1;
+#X connect 17 0 12 0;
+#X connect 18 0 12 0;
+#X connect 19 0 12 0;
+#X connect 20 0 12 0;
+#X connect 21 0 12 0;
+#X connect 22 0 12 0;
+#X connect 24 0 13 1;
