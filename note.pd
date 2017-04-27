@@ -1,4 +1,4 @@
-#N canvas 1104 73 718 526 10;
+#N canvas 1011 400 718 526 10;
 #X obj 124 27 inlet;
 #X obj 161 350 outlet~;
 #X obj 183 268 vline~;
@@ -15,14 +15,16 @@
 #X obj 68 215 r wave_type;
 #X obj 125 50 unpack 0 0;
 #X obj 162 327 *~ 0.5;
-#X msg 326 255 \$1 60 \, 0 1000 100;
 #X obj 162 210 *~ 1;
+#X msg 326 255 \$1 60 \, 0 1000 100;
+#X obj 401 69 r PITCH_LFO_SPEED;
+#X obj 403 119 r PITCH_LFO_GAIN;
 #X connect 0 0 14 0;
 #X connect 2 0 3 1;
 #X connect 3 0 15 0;
-#X connect 4 0 17 0;
+#X connect 4 0 16 0;
 #X connect 7 0 4 0;
-#X connect 8 0 16 0;
+#X connect 8 0 17 0;
 #X connect 9 0 3 0;
 #X connect 10 0 7 0;
 #X connect 11 0 10 0;
@@ -31,5 +33,5 @@
 #X connect 14 0 12 0;
 #X connect 14 1 8 0;
 #X connect 15 0 1 0;
-#X connect 16 0 2 0;
-#X connect 17 0 9 0;
+#X connect 16 0 9 0;
+#X connect 17 0 2 0;
