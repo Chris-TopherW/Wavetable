@@ -17,11 +17,7 @@
 #X obj 162 327 *~ 0.5;
 #X obj 162 210 *~ 1;
 #X msg 326 255 \$1 60 \, 0 1000 100;
-#X obj 401 69 r PITCH_LFO_SPEED;
-#X obj 403 119 r PITCH_LFO_GAIN;
-#X obj 85 178 r pitchMod;
-#X floatatom 20 197 5 0 0 0 - - -;
-#X floatatom 48 79 5 0 0 0 - - -;
+#X obj 70 183 r pitchMod;
 #X connect 0 0 14 0;
 #X connect 2 0 3 1;
 #X connect 3 0 15 0;
@@ -34,9 +30,8 @@
 #X connect 12 0 11 0;
 #X connect 13 0 9 0;
 #X connect 14 0 12 0;
-#X connect 14 0 22 0;
 #X connect 14 1 8 0;
 #X connect 15 0 1 0;
 #X connect 16 0 9 0;
 #X connect 17 0 2 0;
-#X connect 20 0 21 0;
+#X connect 18 0 16 0;
