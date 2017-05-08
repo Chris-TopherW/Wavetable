@@ -3,3 +3,5 @@
 #X obj 446 18 sequencer;
 #X text 105 449 bug- lfo off makes volume quieter than before lfo usage
 ;
+#X text 103 479 Need to fix noise channel to allow for longer wavetable
+;

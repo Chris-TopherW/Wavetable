@@ -98,7 +98,7 @@
 #X obj 49 326 r note11;
 #X obj 49 346 r note12;
 #X obj 512 149 s metroBPM;
-#X floatatom 476 150 5 0 0 0 - - -, f 5;
+#X floatatom 476 150 5 1 1000 0 - - -, f 5;
 #X text 474 134 BPM;
 #X obj 149 143 sequencerTick;
 #X obj 183 123 sequencerTick;
