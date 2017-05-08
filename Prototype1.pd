@@ -1,0 +1,5 @@
+#N canvas 34 23 1066 596 10;
+#X obj 19 17 Synthesiser;
+#X obj 446 18 sequencer;
+#X text 424 187 bug- lfo off makes volume quieter than before lfo usage
+;
